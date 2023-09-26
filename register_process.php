@@ -3,10 +3,18 @@
 require_once('includes/config.php');
 
 if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password for security
-    $email = $_POST['email'];
+    $username 			= isset($_POST['username'])?$_POST['username']:'';
+    $confirm_password 	= isset($_POST['confirm_password'])?$_POST['confirm_password']:'';
+	$password 			= isset($_POST['password'])?$_POST['password']:'';
+	$email 				= isset($_POST['email'])?$_POST['email']:'';
+	if($password !== $confirm_password){ // if both passwords are not match then show error
+		session_start();
+		$_SESSION['registerErr'] = "password and Confirm Password must match!";
+		 header("Location: register.php");
+		exit();	
+	}
 	
+    $password 	= password_hash($password, PASSWORD_BCRYPT); // Hash the password for security
     // SQL query to check if the email already exists
     $checkEmailQuery = "SELECT email FROM users WHERE email = ?";
     $stmt = $conn->prepare($checkEmailQuery);
@@ -33,14 +41,9 @@ if (isset($_POST['register'])) {
             header("Location: login.php");
             exit();
         } else {
-            // Handle registration failure
-			
             echo "Error: " . $stmt->error; exit();
         }
     }
-
-   
-
     $stmt->close();
 }
 

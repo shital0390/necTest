@@ -37,9 +37,5 @@ if(isset($_SESSION['uploadSuccess'])){
         </div>
     </div>
 	
-    <!--<form action="upload_process.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" required><br>
-        <button type="submit" name="upload">Upload</button>
-    </form>-->
 </body>
 </html>

@@ -13,7 +13,7 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <?php
-            // Check if the user is logged in and show appropriate links
+            // Check if the user is logged in and show appropriate menu
             session_start();
             if (isset($_SESSION['email'])) {
                 echo '<li><a href="dashboard.php">Dashboard</a></li>';

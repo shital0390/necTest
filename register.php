@@ -1,7 +1,7 @@
 <?php 
 session_start(); // Start the session
 
-// Check if a login error message is set
+// Check if a register error message is set
 if (isset($_SESSION['registerErr'])) {
     $registerErr = $_SESSION['registerErr'];
     unset($_SESSION['registerErr']); 
@@ -37,7 +37,7 @@ if (isset($_SESSION['registerErr'])) {
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                 </div>
                 <br/>

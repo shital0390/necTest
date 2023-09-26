@@ -23,8 +23,8 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $hashedPassword)) {
             // Password is correct, login successful
             session_start();
-            $_SESSION['email'] = $email; // Store user data in a session
-            header("Location: dashboard.php"); // Redirect to the dashboard or another authorized page
+            $_SESSION['email'] = $email; // Store email in session
+            header("Location: dashboard.php"); // Redirect to the dashboard
             exit();
         } else {
             // Password is incorrect
